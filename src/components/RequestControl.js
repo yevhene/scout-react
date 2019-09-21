@@ -1,6 +1,6 @@
 import React from 'react'
 
-const RequestControl = ({ requestStatus, children }) => {
+const RequestControl = ({ requestStatus = {}, children }) => {
   if (requestStatus.error) {
     return <h3>Error: {requestStatus.error}</h3>
   } else if (requestStatus.isLoading) {

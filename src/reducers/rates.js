@@ -4,7 +4,7 @@ import {
   REQUEST_RATES_FAILED
 } from '../actions/rates'
 
-const defaultState = {
+export const defaultState = {
   data: { rates: {} },
   requestStatus: {
     isLoading: false
@@ -22,9 +22,7 @@ export default function rates(state = defaultState, action) {
       }
     case REQUEST_RATES_SUCCEEDED:
       return {
-        data: {
-          rates: (action.data && action.data.rates) || defaultState.data.rates
-        },
+        data: action.data,
         requestStatus: {
           isLoading: false
         }

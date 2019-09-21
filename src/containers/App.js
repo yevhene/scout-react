@@ -4,14 +4,14 @@ import { connect } from 'react-redux'
 import { requestRates } from '../actions/rates'
 import Rates from './Rates'
 
-const App = ({ requestRates }) =>
-  <div>
+export const App = ({ requestRates }) =>
+  <section>
     <h1>Exchange Rates</h1>
 
     <Rates />
 
     <button onClick={requestRates}>Load rates</button>
-  </div>
+  </section>
 
 const mapDispatchToProps = (dispatch) => ({
   requestRates: () => dispatch(requestRates())

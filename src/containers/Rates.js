@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import withRequestControl from '../lib/with-request-control'
+import withRequestControl from '../lib/withRequestControl'
 
-const Rates = withRequestControl(({ rates }) =>
+export const Rates = withRequestControl(({ rates = {} }) =>
   <table>
     <thead>
       <tr><th>Currency</th><th>Rate</th></tr>

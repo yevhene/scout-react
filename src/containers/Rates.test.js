@@ -15,9 +15,7 @@ describe('Rates', () => {
     const store = configureStore()({ rates: { data: {
       rates: { [currency]: rate }
     } } })
-    const component = mount(
-      <ConnectedRates store={store} />
-    )
+    const component = mount(<ConnectedRates store={store} />)
     const tds = component.find('td')
     expect(tds.length).toBe(2)
     expect(tds.at(0).text()).toBe(currency)
@@ -25,13 +23,12 @@ describe('Rates', () => {
   })
 
   it('renders loading if data is not ready', () => {
-    const component = mount(<Rates requestStatus={{ isLoading: true }} />)
+    const component = mount(<Rates isLoading={true} />)
     expect(component.text()).toEqual(expect.stringContaining('Loading'))
   })
 
-  it('renders error message on error', () => {
-    const message = 'Error message'
-    const component = mount(<Rates requestStatus={{ error: message }} />)
-    expect(component.text()).toEqual(expect.stringContaining(message))
+  it('renders nothing if no data', () => {
+    const component = mount(<Rates />)
+    expect(component.children().length).toBe(0)
   })
 })

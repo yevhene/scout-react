@@ -1,5 +1,4 @@
 import { runSaga } from 'redux-saga'
-import fetchMock from 'fetch-mock'
 
 import requestRates from './requestRates'
 import { REQUEST_RATES_SUCCEEDED, REQUEST_RATES_FAILED } from '../actions/rates'

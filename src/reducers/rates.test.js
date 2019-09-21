@@ -1,7 +1,6 @@
 import reducer, { defaultState } from './rates'
 import {
-  REQUEST_RATES, REQUEST_RATES_SUCCEEDED, REQUEST_RATES_FAILED,
-  requestRates, requestRatesSucceeded, requestRatesFailed
+  REQUEST_RATES, REQUEST_RATES_SUCCEEDED, REQUEST_RATES_FAILED
 } from '../actions/rates'
 
 describe('todos reducer', () => {
@@ -9,19 +8,17 @@ describe('todos reducer', () => {
     expect(reducer(undefined, {})).toEqual(defaultState)
   })
 
-  it('should handle REQUEST_RATES', () => {
+  it('handles REQUEST_RATES', () => {
     expect(
       reducer({}, {
         type: REQUEST_RATES
       })
-    ).toEqual(expect.objectContaining({
-      requestStatus: {
-        isLoading: true
-      }
-    }))
+    ).toEqual({
+      isLoading: true
+    })
   })
 
-  it('should handle REQUEST_RATES_SUCCEEDED', () => {
+  it('handles REQUEST_RATES_SUCCEEDED', () => {
     const data = 'data'
     expect(
       reducer({}, {
@@ -30,25 +27,20 @@ describe('todos reducer', () => {
       })
     ).toEqual(expect.objectContaining({
       data,
-      requestStatus: {
-        isLoading: false
-      }
+      isLoading: false
     }))
   })
 
-  it('should handle REQUEST_RATES_FAILED', () => {
+  it('handles REQUEST_RATES_FAILED', () => {
     const error = 'Request Error'
     expect(
       reducer({}, {
         type: REQUEST_RATES_FAILED,
         error
       })
-    ).toEqual(expect.objectContaining({
-      requestStatus: {
-        isLoading: false,
-        error
-      }
-    }))
+    ).toEqual({
+      isLoading: false,
+    })
   })
 })
 

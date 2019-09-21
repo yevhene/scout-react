@@ -1,23 +1,28 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import withRequestControl from '../lib/withRequestControl'
+export const Rates = ({ data, isLoading }) => {
+  if (isLoading) {
+    return <h3>Loading ...</h3>
+  } else if (!data) {
+    return ''
+  }
 
-export const Rates = withRequestControl(({ rates = {} }) =>
-  <table>
-    <thead>
-      <tr><th>Currency</th><th>Rate</th></tr>
-    </thead>
-    <tbody>
-      {Object.entries(rates).map(([currency, rate]) =>
-        <tr key={currency}><td>{currency}</td><td>{rate}</td></tr>
-      )}
-    </tbody>
-  </table>
-)
+  return (
+    <table>
+      <thead>
+        <tr><th>Currency</th><th>Rate</th></tr>
+      </thead>
+      <tbody>
+        {Object.entries(data.rates).map(([currency, rate]) =>
+          <tr key={currency}><td>{currency}</td><td>{rate}</td></tr>
+        )}
+      </tbody>
+    </table>
+  )
+}
 
-const mapStateToProps = ({ rates: { data: { rates }, requestStatus } }) => ({
-  rates, requestStatus
-})
+
+const mapStateToProps = ({ rates }) => ({ ...rates })
 
 export default connect(mapStateToProps)(Rates)

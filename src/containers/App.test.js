@@ -1,5 +1,6 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { Provider } from 'react-redux'
+import { mount, shallow } from 'enzyme'
 import configureStore from 'redux-mock-store'
 
 import ConnectedApp, { App } from './App'
@@ -15,5 +16,10 @@ describe('App', () => {
     const component = shallow(<ConnectedApp store={store} />)
     component.shallow().find('button').simulate('click')
     expect(store.getActions()).toEqual([{ type: REQUEST_RATES }])
+  })
+
+  it('renders content without crashing', () => {
+    const store = configureStore()({ global: {} })
+    mount(<Provider store={store}><ConnectedApp /></Provider>)
   })
 })

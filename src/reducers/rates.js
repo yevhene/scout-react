@@ -5,10 +5,7 @@ import {
 } from '../actions/rates'
 
 export const defaultState = {
-  data: { rates: {} },
-  requestStatus: {
-    isLoading: false
-  }
+  isLoading: false
 }
 
 export default function rates(state = defaultState, action) {
@@ -16,24 +13,17 @@ export default function rates(state = defaultState, action) {
     case REQUEST_RATES:
       return {
         ...defaultState,
-        requestStatus: {
-          isLoading: true
-        }
+        isLoading: true
       }
     case REQUEST_RATES_SUCCEEDED:
       return {
         data: action.data,
-        requestStatus: {
-          isLoading: false
-        }
+        isLoading: false
       }
     case REQUEST_RATES_FAILED:
       return {
         ...defaultState,
-        requestStatus: {
-          error: action.error,
-          isLoading: false
-        }
+        isLoading: false
       }
     default:
       return state

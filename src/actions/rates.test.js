@@ -1,6 +1,10 @@
 import {
-  REQUEST_RATES, REQUEST_RATES_SUCCEEDED, REQUEST_RATES_FAILED,
-  requestRates, requestRatesSucceeded, requestRatesFailed
+  REQUEST_RATES,
+  REQUEST_RATES_SUCCEEDED,
+  REQUEST_RATES_FAILED,
+  requestRates,
+  requestRatesSucceeded,
+  requestRatesFailed
 } from './rates'
 
 describe('rates actions', () => {
@@ -12,7 +16,7 @@ describe('rates actions', () => {
   })
 
   it('creates an action for succeeded request', () => {
-    const data = { rates: { 'IDR': 29 } }
+    const data = { rates: { IDR: 29 } }
     const expectedAction = {
       type: REQUEST_RATES_SUCCEEDED,
       data

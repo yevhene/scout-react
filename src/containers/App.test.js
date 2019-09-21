@@ -8,18 +8,25 @@ import { REQUEST_RATES } from '../actions/rates'
 
 describe('App', () => {
   it('renders without crashing', () => {
-    shallow(<App />)
+    shallow(<App requestRates={() => {}} />)
   })
 
   it('requests data on button press', () => {
     const store = configureStore()()
     const component = shallow(<ConnectedApp store={store} />)
-    component.shallow().find('button').simulate('click')
+    component
+      .shallow()
+      .find('button')
+      .simulate('click')
     expect(store.getActions()).toEqual([{ type: REQUEST_RATES }])
   })
 
   it('renders content without crashing', () => {
     const store = configureStore()({ global: {} })
-    mount(<Provider store={store}><ConnectedApp /></Provider>)
+    mount(
+      <Provider store={store}>
+        <ConnectedApp />
+      </Provider>
+    )
   })
 })

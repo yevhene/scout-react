@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import Modal from '../components/Modal'
@@ -16,6 +17,13 @@ export const ErrorHandler = ({ error, resetError, children }) => {
   )
 }
 
+ErrorHandler.propTypes = {
+  resetError: PropTypes.func.isRequired,
+  children: PropTypes.func.isRequired,
+
+  error: PropTypes.string
+}
+
 const mapStateToProps = ({ global: { error } }) => ({ error })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -24,4 +32,7 @@ const mapDispatchToProps = (dispatch) => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(ErrorHandler)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ErrorHandler)

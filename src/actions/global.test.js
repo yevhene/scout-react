@@ -1,7 +1,4 @@
-import {
-  RESET_ERROR,
-  resetError
-} from './global'
+import { RESET_ERROR, resetError } from './global'
 
 describe('global', () => {
   it('creates an action to reset error', () => {

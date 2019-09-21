@@ -13,9 +13,12 @@ describe('requestRates', () => {
     fetch.once(JSON.stringify(data))
 
     const dispatched = []
-    await runSaga({
-      dispatch: (action) => dispatched.push(action)
-    }, requestRates).toPromise()
+    await runSaga(
+      {
+        dispatch: (action) => dispatched.push(action)
+      },
+      requestRates
+    ).toPromise()
 
     expect(dispatched).toEqual([{ type: REQUEST_RATES_SUCCEEDED, data }])
   })
@@ -25,9 +28,12 @@ describe('requestRates', () => {
     fetch.once(JSON.stringify({ error }), { status: 400 })
 
     const dispatched = []
-    await runSaga({
-      dispatch: (action) => dispatched.push(action)
-    }, requestRates).toPromise()
+    await runSaga(
+      {
+        dispatch: (action) => dispatched.push(action)
+      },
+      requestRates
+    ).toPromise()
 
     expect(dispatched).toEqual([{ type: REQUEST_RATES_FAILED, error }])
   })
@@ -36,12 +42,18 @@ describe('requestRates', () => {
     fetch.once('wrong request')
 
     const dispatched = []
-    await runSaga({
-      dispatch: (action) => dispatched.push(action)
-    }, requestRates).toPromise()
+    await runSaga(
+      {
+        dispatch: (action) => dispatched.push(action)
+      },
+      requestRates
+    ).toPromise()
 
-    expect(dispatched).toEqual([{
-      type: REQUEST_RATES_FAILED, error: expect.any(String)
-    }])
+    expect(dispatched).toEqual([
+      {
+        type: REQUEST_RATES_FAILED,
+        error: expect.any(String)
+      }
+    ])
   })
 })

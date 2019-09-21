@@ -10,5 +10,6 @@ import App from './containers/App'
 ReactDOM.render(
   <Provider store={configureStore()}>
     <App />
-  </Provider>
-, document.getElementById('root'))
+  </Provider>,
+  document.getElementById('root')
+)

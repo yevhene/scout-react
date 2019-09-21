@@ -4,5 +4,6 @@ import global from './global'
 import rates from './rates'
 
 export default combineReducers({
-  global, rates
+  global,
+  rates
 })

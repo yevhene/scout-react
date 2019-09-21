@@ -1,6 +1,8 @@
 import reducer, { defaultState } from './rates'
 import {
-  REQUEST_RATES, REQUEST_RATES_SUCCEEDED, REQUEST_RATES_FAILED
+  REQUEST_RATES,
+  REQUEST_RATES_SUCCEEDED,
+  REQUEST_RATES_FAILED
 } from '../actions/rates'
 
 describe('todos reducer', () => {
@@ -10,9 +12,12 @@ describe('todos reducer', () => {
 
   it('handles REQUEST_RATES', () => {
     expect(
-      reducer({}, {
-        type: REQUEST_RATES
-      })
+      reducer(
+        {},
+        {
+          type: REQUEST_RATES
+        }
+      )
     ).toEqual({
       isLoading: true
     })
@@ -21,26 +26,33 @@ describe('todos reducer', () => {
   it('handles REQUEST_RATES_SUCCEEDED', () => {
     const data = 'data'
     expect(
-      reducer({}, {
-        type: REQUEST_RATES_SUCCEEDED,
-        data
+      reducer(
+        {},
+        {
+          type: REQUEST_RATES_SUCCEEDED,
+          data
+        }
+      )
+    ).toEqual(
+      expect.objectContaining({
+        data,
+        isLoading: false
       })
-    ).toEqual(expect.objectContaining({
-      data,
-      isLoading: false
-    }))
+    )
   })
 
   it('handles REQUEST_RATES_FAILED', () => {
     const error = 'Request Error'
     expect(
-      reducer({}, {
-        type: REQUEST_RATES_FAILED,
-        error
-      })
+      reducer(
+        {},
+        {
+          type: REQUEST_RATES_FAILED,
+          error
+        }
+      )
     ).toEqual({
-      isLoading: false,
+      isLoading: false
     })
   })
 })
-

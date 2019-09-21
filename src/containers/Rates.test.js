@@ -12,9 +12,13 @@ describe('Rates', () => {
   it('renders rates from store', () => {
     const currency = 'GBP'
     const rate = 42
-    const store = configureStore()({ rates: { data: {
-      rates: { [currency]: rate }
-    } } })
+    const store = configureStore()({
+      rates: {
+        data: {
+          rates: { [currency]: rate }
+        }
+      }
+    })
     const component = mount(<ConnectedRates store={store} />)
     const tds = component.find('td')
     expect(tds.length).toBe(2)

@@ -9,22 +9,27 @@ describe('todos reducer', () => {
 
   it('handles RESET_ERROR', () => {
     expect(
-      reducer({ error: 'error' }, {
-        type: RESET_ERROR
-      })
+      reducer(
+        { error: 'error' },
+        {
+          type: RESET_ERROR
+        }
+      )
     ).toEqual({})
   })
 
   it('handles REQUEST_RATES_FAILED', () => {
     const error = 'Request Error'
     expect(
-      reducer({}, {
-        type: REQUEST_RATES_FAILED,
-        error
-      })
+      reducer(
+        {},
+        {
+          type: REQUEST_RATES_FAILED,
+          error
+        }
+      )
     ).toEqual({
       error: error
     })
   })
 })
-

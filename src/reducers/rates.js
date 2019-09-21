@@ -4,15 +4,12 @@ import {
   REQUEST_RATES_FAILED
 } from '../actions/rates'
 
-export const defaultState = {
-  isLoading: false
-}
+export const defaultState = {}
 
 export default function rates(state = defaultState, action) {
   switch (action.type) {
     case REQUEST_RATES:
       return {
-        ...defaultState,
         isLoading: true
       }
     case REQUEST_RATES_SUCCEEDED:
@@ -22,7 +19,6 @@ export default function rates(state = defaultState, action) {
       }
     case REQUEST_RATES_FAILED:
       return {
-        ...defaultState,
         isLoading: false
       }
     default:

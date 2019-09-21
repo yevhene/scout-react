@@ -1,11 +1,23 @@
 # Exchange Rates
 
+## [Task](https://gist.github.com/andris-silis/1fd34f5466ea9b799cadd079238beb6b)
+
 ## Setup
-```javascript
+```bash
 yarn
 ```
 
 ## Run
-```javascript
+```bash
 yarn start
+```
+
+## Test
+```bash
+yarn test
+```
+
+### Test coverage
+```bash
+yarn test --coverage --watchAll
 ```
